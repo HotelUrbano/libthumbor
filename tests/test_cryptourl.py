@@ -10,13 +10,14 @@
 
 '''libthumbor cryptography tests'''
 from unittest import TestCase
+import six
 
-from thumbor.crypto import Cryptor
+from .thumbor import Cryptor
 
 from libthumbor.crypto import CryptoURL
 
 IMAGE_URL = 'my.server.com/some/path/to/image.jpg'
-KEY = 'my-security-key'
+KEY = six.b('my-security-key')
 
 def decrypt_in_thumbor(url):
     '''Uses thumbor to decrypt libthumbor's encrypted URL'''
@@ -317,7 +318,7 @@ class NewFormatUrl(TestCase, NewFormatUrlTestsMixin):
 
 class NewFormatUrlWithUnicodeKey(TestCase, NewFormatUrlTestsMixin):
     def setUp(self):
-        self.crypto = CryptoURL(unicode(KEY))
+        self.crypto = CryptoURL(KEY.decode('utf-8'))
 
 class GenerateWithUnsafeTestCase(TestCase):
 

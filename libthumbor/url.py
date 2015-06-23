@@ -45,7 +45,7 @@ def url_for(**options):
     '''Returns the url for the specified options'''
 
     url_parts = get_url_parts(**options)
-    image_hash = hashlib.md5(options['image_url']).hexdigest()
+    image_hash = hashlib.md5(options['image_url'].encode('ascii')).hexdigest()
     url_parts.append(image_hash)
 
     return "/".join(url_parts)

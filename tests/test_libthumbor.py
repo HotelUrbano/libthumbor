@@ -11,8 +11,7 @@
 import re
 import hashlib
 
-from thumbor.crypto import Cryptor, Signer
-from thumbor.url import Url
+from .thumbor import Cryptor, Signer, Url
 
 from libthumbor import CryptoURL
 
@@ -112,7 +111,7 @@ def test_thumbor_can_decrypt_lib_thumbor_generated_url():
     assert decrypted_url['height'] == 200
     assert decrypted_url['width'] == 300
     assert decrypted_url['smart']
-    assert decrypted_url['image_hash'] == hashlib.md5(image).hexdigest()
+    assert decrypted_url['image_hash'] == hashlib.md5(image.encode('utf-8')).hexdigest()
 
 def test_thumbor_can_decrypt_lib_thumbor_generated_url_new_format():
     key = "my-security-key"
