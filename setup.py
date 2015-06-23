@@ -11,9 +11,9 @@
 '''Module that configures setuptools to package libthumbor'''
 
 from setuptools import setup, find_packages
-from libthumbor import __version__
 
 tests_require = [
+    'six',
     'mock',
     'nose',
     'coverage',
@@ -21,12 +21,14 @@ tests_require = [
     'preggy',
     'ipdb',
     'coveralls',
-    'thumbor',
+#    'thumbor',
 ]
+
+version = "1.2.0"
 
 setup(
     name = 'libthumbor',
-    version = __version__,
+    version = version,
     description = "libthumbor is the python extension to thumbor",
     long_description = """
 libthumbor is the python extension to thumbor.
@@ -53,13 +55,11 @@ It allows users to generate safe urls easily.
     include_package_data = True,
     package_data = {
     },
-
-    extras_require={
-        'tests': tests_require,
-    },
-
+    tests_require=tests_require,
     install_requires=[
-        "pyCrypto"
+        "pyCrypto",
+        "six",
     ],
+    test_suite='nose.collector',
 )
 
