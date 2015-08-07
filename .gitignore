@@ -4,3 +4,6 @@
 dist
 libthumbor.egg-info
 *.db
+.eggs
+.tox
+
