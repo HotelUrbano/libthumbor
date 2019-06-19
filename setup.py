@@ -27,7 +27,7 @@ tests_require = [
 version = "1.2.0"
 
 setup(
-    name = 'libthumbor',
+    name = 'hums_libthumbor',
     version = version,
     description = "libthumbor is the python extension to thumbor",
     long_description = """
